@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Rewrite expression parser to use a grammar-based parsing (with petitparser).
+
 ## [2.3.0] - 2021-12-21
 
 ### Added
