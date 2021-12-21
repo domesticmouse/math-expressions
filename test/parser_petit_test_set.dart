@@ -1,8 +1,6 @@
 part of math_expressions_test;
 
-/**
- * Contains a test set for testing the parser and lexer
- */
+/// Contains a test set for testing the parser and lexer
 class PetitParserTests extends TestSet {
   @override
   String get name => 'Petit Parser Tests';
@@ -18,19 +16,19 @@ class PetitParserTests extends TestSet {
         'Division': parseDivision,
         'Addition': parsePlus,
         'Subtraction': parseMinus,
+        'Parenthesis': parseParenthesis,
         //'Logarithm': parseLog,
         //'Natural Logarithm': parseLn,
+        /// TODO functions
         'Functions': parseFunctions,
-        'Parenthesis': parseParenthesis,
-        //'Invalid': parserExpressionTestInvalid,
+        //'Algorithmic functions': parseAlgorithmicFunctions,
+        'Invalid': parserExpressionTestInvalid,
       };
 
   @override
-  void initTests() {
-    parser = ExpressionParser();
-  }
+  void initTests() {}
 
-  ExpressionParser parser;
+  ExpressionParser parser = ExpressionParser();
 
   void parameterized(Map<String, Expression> cases) {
     cases.forEach((key, value) {
@@ -159,8 +157,8 @@ class PetitParserTests extends TestSet {
       ')': throwsFormatException,
       '1+1)': throwsFormatException,
       '(1+1': throwsFormatException,
-      'log(,1)': throwsRangeError,
-      'log(1,)': throwsRangeError,
+      'log(,1)': throwsFormatException,
+      'log(1,)': throwsFormatException,
     };
 
     for (String expr in invalidCases.keys) {

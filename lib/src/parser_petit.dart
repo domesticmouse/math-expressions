@@ -1,7 +1,7 @@
 part of math_expressions;
 
 class ExpressionParser {
-  p.Parser parser;
+  late final p.Parser parser;
 
   ExpressionParser() {
     final builder = ExpressionBuilder();
@@ -13,7 +13,7 @@ class ExpressionParser {
           .seq(char('.').seq(digit().plus()).optional())
           .flatten()
           .trim()
-          .map<num>((a) => num.tryParse(a))
+          .map(num.parse)
           .map<Expression>((n) => Number(n)))
       ..primitive((letter() & word().star())
           .flatten()
